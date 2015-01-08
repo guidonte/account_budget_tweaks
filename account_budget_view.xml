@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="crossovered_budget_view_form">
+            <field name="name">crossovered.budget.view.form.inherited</field>
+            <field name="model">crossovered.budget</field>
+            <field name="inherit_id" ref="account_budget.crossovered_budget_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="before">
+                    <button string="Add lines" name="%(action_account_budget_tweaks_lines)d" states="draft"
+                            type="action" class="oe_highlight oe_left"/>
+                </xpath>
+                <xpath expr="//notebook" position="after">
+                     <group string="Summary">
+                          <field name="summary_line_ids" mode="tree" nolabel="1" colspan="1">
+                              <tree>
+                                  <field name="general_budget_id" string="Budgetary position"/>
+                                  <field name="planned_amount" string="Planned Amount" sum="Planned Amount"/>
+                                  <field name="practical_amount" string="Practical Amount" sum="Practical Amount"/>
+                                  <field name="theoritical_amount" string="Theoretical Amount" sum="Theoretical Amount"/>
+                              </tree>
+                          </field>
+                     </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+
+</openerp>
+

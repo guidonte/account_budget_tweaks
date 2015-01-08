@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="account_budget_tweaks_lines_view">
+            <field name="name">account.budget.tweaks.lines.form</field>
+            <field name="model">account.budget.tweaks.lines</field>
+            <field name="arch" type="xml">
+                <form string="Add budget lines" version="7.0">
+                     <group string="Duration" col="4">
+                         <field name="date_from"/>
+                         <field name="date_to"/>
+                     </group>
+                     <group string="Analytic accounts">
+                         <field string="Analytic accounts" name="analytic_account_ids" widget="many2many_checkboxes"/>
+                     </group>
+                     <group string="Budgetary positions">
+                         <field string="Budgetary positions" name="general_budget_ids" widget="many2many_checkboxes"/>
+                     </group>
+                     <footer>
+                         <button string="Add Lines" type="object" name="add_lines" class="oe_highlight"/>
+                         or
+                         <button string="Cancel" class="oe_link" special="cancel"/>
+                     </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_account_budget_tweaks_lines">
+            <field name="name">Add Lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.budget.tweaks.lines</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_budget_tweaks_lines_view"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+
+</openerp>
+
